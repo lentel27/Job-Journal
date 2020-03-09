@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <style>
+        table {
+            margin-left: 150px
+        }
+        td {
+            padding: 5px;
+
+        }
+    </style>
+    <title>Журнал работ</title>
+</head>
+<body>
+    <h1>Миссия Колонизация Марса</h1><br>
+    <h4 style="color: gray">И на Марсе будут яблони цвести!</h4><br><br><br><br>
+    <h2 style="margin-left: 635px"><strong>Works log</strong></h2>
+
+        {% for i in jobs %}
+        <h2 style="margin-left: 150px">Action # {{ i }}</h2>
+        <table>
+            <tr bgcolor="#D4D4D4">
+                <td width="500px">Title of activity</td>
+                <td width="150px">Team leader</td>
+                <td width="80px" align="center">Duration</td>
+                <td width="250px" align="center">List of Collaborators</td>
+                <td width="100px" align="center">Is finished</td>
+            </tr>
+            <tr bgcolor="#E1E8FE">
+                {% for j in jobs[i] %}
+                    {% if loop.index == 5 %}
+                        {% if j == False %}
+                            <td align="center" bgcolor="#FED2CD">Is not finished</td>
+                        {% else %}
+                            <td align="center" bgcolor="#E0FECD">Finished</td>
+                        {% endif %}
+                    {% elif loop.index == 3 %}
+                        <td align="center">{{ j }} hours</td>
+                    {% elif loop.index == 4 %}
+                        <td align="center">{{ j }}</td>
+                    {% else %}
+                        <td>{{ j }}</td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        </table><br>
+        {% endfor %}
+</body>
+</html>
