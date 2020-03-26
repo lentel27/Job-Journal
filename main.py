@@ -19,9 +19,9 @@ def main():
     db_session.global_init("db/blogs.sqlite")
     session = db_session.create_session()
 
-    for job in session.query(Jobs).all():
-        jobs_dict[job.id] = [job.title_of_activity, job.team_leader,
-                             job.duration, job.collaborators, job.is_finished]
+    for jb in session.query(Jobs).all():
+        jobs_dict[jb.id] = [jb.title_of_activity, jb.team_leader,
+                            jb.duration, jb.collaborators, jb.is_finished]
 
     app.run(port="8000", host="127.0.0.1")
 
